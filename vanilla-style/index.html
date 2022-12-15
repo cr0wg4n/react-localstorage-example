@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Vanilla Style</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+    <body>
+        <marquee behavior="" direction="">Vanilla Style (check the code)</marquee>
+    </body>
+    <script>
+        // Ways to access the localStorage API:
+        window.localStorage;
+        localStorage;
+        
+        // Set key-value (both are equivalent, the 
+        // second could be use to set keys 
+        // programmatically)
+        localStorage.counter = 100;
+        localStorage.setItem('counter', 100);
+
+        // ❌ Set key-value (Wrong way)
+        localStorage.user = {
+            name: 'Jonas',
+            age: 12,
+            description: 'a lot of confusing references'
+        }
+        // The result will be "[object Object]"
+        // because set method infers the .toString value, 
+        // so try it 
+        console.log(localStorage.user);
+
+        // Get key-value (both are equivalent, the 
+        // second could be use to set keys 
+        // programmatically)
+        let counter = localStorage.counter;
+        counter = localStorage.getItem('counter');
+        console.log(counter);
+
+        // Remove key-value
+        localStorage.removeItem('counter');
+        // Alternativelly 'delete' works but it happens thanks 
+        // to the language and not the localStorage implementation
+        // so be careful, we don't recommend it's use
+        delete localStorage.counter;
+
+
+        // Cleaning all the localStorage
+        localStorage.clear();
+
+
+        // Miscellaneous:
+        // If you need to save JSON objects 
+        localStorage.setItem('user',JSON.stringify({
+            name: 'Jonas',
+            age: 12,
+            description: 'a lot of confusing references'
+        }))
+        const user = JSON.parse(localStorage.getItem('user'))
+        console.log(user);
+    </script>
+</html>
